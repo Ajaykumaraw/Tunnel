@@ -20,6 +20,9 @@ module.exports = {
         Pacifico: ['Pacifico', "cursive"],
         Quicksand: ['Quicksand', "sans-serif"],
        },
+       colors:{
+        "app-color":'#fa7e11',
+       }
     },
   },
   plugins: [],
