@@ -15,6 +15,11 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        Rampart: ["Rampart One", "cursive"],
+        Pacifico: ['Pacifico', "cursive"],
+        Quicksand: ['Quicksand', "sans-serif"],
+       },
     },
   },
   plugins: [],
