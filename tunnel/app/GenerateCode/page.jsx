@@ -1,9 +1,6 @@
-import Header from "../components/Header/page"
-
 function GenerateCode(){
     return(
         <div>
-            <Header></Header>
             <div className="app__generate-code h-screen w-full flex items-center justify-center">
                     <div className="app__generate-code w-2/4 h-1/2 flex justify-center ">
                          <div className="flex flex-col items-center justify-center -mt-32  " >

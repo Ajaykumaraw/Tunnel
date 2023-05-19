@@ -1,9 +1,6 @@
-import Header from "../components/Header/page"
-
 function Signup(){
     return(
         <div>
-        <Header></Header>
         <div className="app__login w-full h-screen flex items-center justify-center text-center">
             <div className="app-login-content h-1/3 w-60 flex flex-col items-center justify-around -mt-32">
                 <div className="username bg-slate-200 h-8 w-full rounded-2xl">
