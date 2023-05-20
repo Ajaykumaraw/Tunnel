@@ -3,7 +3,7 @@ import {CiMenuFries} from 'react-icons/ci';
 
 function Header() {
   return (
-    <div className="app__header z-10 flex flex-row h-16 items-center justify-between p-8 text-app-color bg-slate-50">
+    <div className="app__header z-10 flex flex-row h-20 items-center justify-between p-8 text-app-color bg-slate-50 shadow-lg shadow-slate-200">
         <div className="app__header-code rounded-xl border-app-color text-slate-400">
             <input type="text" placeholder='Enter code...' 
             className='w-36 h-8 pl-8 pr-8 border rounded-xl border-amber-500 outline-0 text-current text-xs' />

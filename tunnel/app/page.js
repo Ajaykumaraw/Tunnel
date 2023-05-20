@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Header from './components/Header/page'
-import HomeScreen from './components/HomeScreen/page'
+import HomeScreen from './HomeScreen/page'
 import Menu from './components/Menu/page';
 
 export default function Home() {
