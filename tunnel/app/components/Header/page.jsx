@@ -1,7 +1,11 @@
+"use client"
+
 import {CiMenuFries} from 'react-icons/ci';
+import {useState} from 'react';
 
 
 function Header() {
+  const [submenu,setsubMenu] = useState(true);
   return (
     <div className="app__header z-10 flex flex-row h-20 items-center justify-between p-8 text-app-color bg-slate-50 shadow-lg shadow-slate-200">
         <div className="app__header-code rounded-xl border-app-color text-slate-400">
@@ -12,7 +16,7 @@ function Header() {
           <h1 className='font-Pacifico text-app-color text-4xl font-medium mr-8 font-light'>Tunn<span className='text-3xl font-medium text-black'>el</span> </h1>
         </div>
         <div className="app__header-menu text-2xl font-medium cursor-pointer text-app-color">
-            <CiMenuFries className='text-2xl font-semibold'/>
+            <CiMenuFries onClick={()=> {setsubMenu(!submenu)}} className='text-2xl font-semibold'/>
         </div>
     </div>
   )
