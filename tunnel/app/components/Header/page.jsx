@@ -1,11 +1,10 @@
-"use client"
-
 import {CiMenuFries} from 'react-icons/ci';
-import {useState} from 'react';
-
+import {useContext} from 'react'
+import menuContext from '@/app/app_context/appContext';
 
 function Header() {
-  const [submenu,setsubMenu] = useState(true);
+  const menu = useContext(menuContext);
+  const {submenu,setsubMenu} = menu; 
   return (
     <div className="app__header z-10 flex flex-row h-20 items-center justify-between p-8 text-app-color bg-slate-50 shadow-lg shadow-slate-200">
         <div className="app__header-code rounded-xl border-app-color text-slate-400">
