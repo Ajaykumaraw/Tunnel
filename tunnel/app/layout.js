@@ -3,6 +3,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Header from './components/Header/page'
 import menuContext from './app_context/appContext'
+import Menu from './components/Menu/page'
 import {useState} from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <menuContext.Provider value={{submenu,setsubMenu}}>
           <Header/>
+          {submenu?<Menu/>:''}
           {children}
         </menuContext.Provider>
       </body>

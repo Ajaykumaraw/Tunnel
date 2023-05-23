@@ -14,7 +14,6 @@ export default function Home() {
   
   return (
       <div className="app__home w-full h-screen flex text-center font-Quicksand relative">
-        {submenu?<Menu/>:''}
         <div className="app__home-content h-4/5 mx-auto pt-12 text-center flex flex-col justify-around items-center">
             <div className="app__home_content-title text-center">
                 <h1 className="text-8xl font-extrabold text-app-color">Eassy Ac<span className="text-black">cess</span> </h1>

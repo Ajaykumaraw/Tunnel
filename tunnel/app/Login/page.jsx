@@ -1,4 +1,11 @@
+"use client"
+
+import Link from "next/link"
 function Login(){
+
+    const loginClick=()=>{
+        <Link href={'./GenerateCode'}></Link>
+    } 
     return(
         <div>
             <div className="app__login w-full h-screen flex items-center justify-center text-center">
@@ -10,7 +17,7 @@ function Login(){
                         <input className="outline-0 p-1 pl-4 pt-2 w-full rounded-2xl bg-slate-200" type="password"  placeholder="password" />
                     </div>
                     <div className="login-btn bg-app-color w-full h-8 flex items-center text-slate-100 font-Quicksand rounded-2xl">
-                        <button className="w-full">Login</button>
+                        <button onClick={()=>loginClick} className="w-full h-full">Login</button>
                     </div>
                 </div>
             </div>

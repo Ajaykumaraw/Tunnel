@@ -6,7 +6,7 @@ function Menu(){
   
     return(
         <>
-            <div className="app__menu absolute top-4 right-12 bg-slate-200 rounded-2xl p-8">
+            <div className="app__menu absolute top-20 right-12 bg-slate-200 rounded-2xl p-8 z-10">
                 <ul>
                     <li className="cursor-pointer">
                         <Link href={"./Login"}>Login</Link>
