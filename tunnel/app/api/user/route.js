@@ -9,6 +9,7 @@ export async function GET(request){
                                                                                    
 
 export async function POST(request){
+    console.log('request in post')
     try {
        await dbConnect();
         const user = new UserModal(request.body);
