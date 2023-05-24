@@ -10,16 +10,15 @@ export async function GET(request){
 
 export async function POST(request){
     console.log('request in post')
-    try {
+    try {   
        await dbConnect();
-        const user = new UserModal(request.body);
-       await user.save().then(()=>{
+        const dbuserModal = UserModal(request.body);
+        const user = dbuserModal.save().then(()=>{
+            console.log('data saved',request.body);
             new Response(user);
         })
         
     } catch (error) {
         new Response(error);
     }
-    
-   return new Response(request.body);
 }

@@ -1,6 +1,6 @@
 import mongoose, { Mongoose } from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+const userSchema = mongoose.Schema({
     username: {
         type:String,
         required:true
@@ -14,6 +14,6 @@ const userSchema = new mongoose.Schema({
 }
 )
 
-UserModal = mongoose.model('user',userSchema)
+const UserModal = mongoose.model('tunnelUser',userSchema)
 
 export default UserModal;

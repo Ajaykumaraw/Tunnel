@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
 
-const mongoUrl = 'mongodb://127.0.0.1:27017/tunnel'
+const mongoUrl = 'mongodb://127.0.0.1:27017/tunnel';
 
 export const dbConnect = async () =>{
-    return await mongoose.connect(mongoUrl,{
+    return mongoose.connect(mongoUrl,{
         useNewUrlParser:true,
+        
     });
 }
 
