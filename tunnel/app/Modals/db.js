@@ -5,7 +5,7 @@ const mongoUrl = 'mongodb://127.0.0.1:27017/tunnel';
 export const dbConnect = async () =>{
     return mongoose.connect(mongoUrl,{
         useNewUrlParser:true,
-        
+        useUnifiedTopology:true,
     });
 }
 

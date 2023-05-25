@@ -1,6 +1,6 @@
-import mongoose, { Mongoose } from 'mongoose';
+import { Schema,model,models } from "mongoose";
 
-const userSchema = mongoose.Schema({
+const userSchema = new Schema({
     username: {
         type:String,
         required:true
@@ -14,6 +14,6 @@ const userSchema = mongoose.Schema({
 }
 )
 
-const UserModal = mongoose.model('tunnelUser',userSchema)
+const UserModal = models.tunnelUser || model("tunnelUser",userSchema)
 
 export default UserModal;
