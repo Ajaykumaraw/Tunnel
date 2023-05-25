@@ -1,10 +1,12 @@
 "use client"
-import {useState} from 'react'
+import {useState} from 'react';
+import axios from 'axios';
 
 
 function Signup(){
 
     const[userRegData,setUserRegData] = useState({});
+    const appUrl = 'http://localhost:3000/api/user';
 
     const Handlerchange =(e)=>{
         console.log(e.target.value)
@@ -14,7 +16,10 @@ function Signup(){
 
     const signupFormSubmit = (e) =>{
         e.preventDefault();
-        console.log(userRegData); 
+        axios.post(appUrl,userRegData).then((response)=>{
+            console.log(response);
+        })
+        // console.log(userRegData); 
     }
     return(
         <div>
