@@ -7,12 +7,15 @@ export async function POST(req){
     console.log(user);
     try {
          dbConnect();
-         const userLogin = UserModal.findById(user.username);
-        // if(!userLogin) return new Response('user not found');
-        // if(user.password === userLogin.password){
-        //     return new Response("login successfull");    
-        // }
-         return new Response(userLogin);
+         const userLogin = await UserModal.findOne({username:[user.username]});
+         console.log("user found",user);
+         if(!userLogin){
+             return new Response('user not found');
+         }else if(user.password == userLogin.password){
+                return new Response('login successful');
+         }else{
+            return new Response('incorrect password');
+         }
     } catch (error) {
         return new Response(error);
     }
