@@ -1,7 +1,12 @@
 "use client"
 import {useState} from 'react';
 import Link from "next/link"
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Login(){
+    const LoginAppUrl = 'http://localhost:3000/api/user/login';
 
     const[userData, setuserData] = useState({});
 
@@ -14,11 +19,25 @@ function Login(){
         setuserData({...userData,[e.target.name]:e.target.value})
     }
 
+    const notify = () => toast("login successfull");
+
     const submitHandler = (e)=>{
         e.preventDefault();
-      
+        axios.post(LoginAppUrl,userData).then((response)=>{
+            const {data} = response;
+            console.log(data);
+            localStorage.setItem("username",data.username);
+            // alert("login successfull"+response.username);
+            notify();
+           
+        }).catch(()=>{
+            alert("not login");
+        })
         console.log(userData);
     }
+
+    
+
     return(
         <div>
             <div className="app__login w-full h-screen flex items-center justify-center text-center">
@@ -36,6 +55,7 @@ function Login(){
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     )
 }
