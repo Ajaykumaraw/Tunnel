@@ -1,18 +1,28 @@
 "use client"
 import {useState} from 'react';
+import axios from 'axios';
+import {useRouter} from 'next/navigation';
 
 function GenerateCode(){
-
+    const router = useRouter();
     const [code,setCode] = useState();
     const dummycode = 'Code';
+    const getCodeUrl = "/api/code";
 
     const clickHandler = (e) =>{
         e.preventDefault();
-        setCode(code=> code = Math.floor(100000 + Math.random() * 900000) );
-        console.log(code);
+        const userName = localStorage.getItem("username");
+        const data = {username:userName};
+        
+        axios.post(getCodeUrl,data).then((response)=>{
+            console.log(response.data);
+            if(response.data==="Please login"){
+                router.push("./Login");
+            }else{
+                setCode(response.data);
+            }
+        })
     }
-
-
 
     return(
         <div>
@@ -23,8 +33,14 @@ function GenerateCode(){
                                 <button onClick={clickHandler} className="font-Quicksand w-full h-full text-slate-100">Generate Code</button>
                             </div>
                             <div className="app__generate-code-btn w-40 h-8 mt-8 bg-app-color rounded-3xl text-center">
-                                <input value={code} defaultValue={dummycode} className="font-Quicksand w-full h-full text-slate-500 pl-8 rounded-3xl"/>
+                                <input value={code} defaultValue={dummycode} className="font-Quicksand w-full h-full text-slate-500 text-center rounded-3xl"/>
                             </div>
+                            {code?<div className="app__code-description w-full h-12 mt-8 mx-auto 
+                            text-center text-sx">
+                                <p className='app__code-description-text text-sm italic font-Quicksand text-slate-500'>Code Generated successfully,
+                                use this code to access data on multiple screens.
+                                </p>
+                            </div> : ''}
                          </div>
                     </div>
             </div>      
