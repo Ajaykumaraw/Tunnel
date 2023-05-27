@@ -2,10 +2,14 @@
 import {useState} from 'react';
 import Link from "next/link"
 import axios from 'axios';
+import { Router, useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Login(){
+
+    let router = useRouter();
+
     const LoginAppUrl = 'http://localhost:3000/api/user/login';
 
     const[userData, setuserData] = useState({});
@@ -19,16 +23,22 @@ function Login(){
         setuserData({...userData,[e.target.name]:e.target.value})
     }
 
-    const notify = () => toast("login successfull");
+    const notify = (data) => toast(data);
 
     const submitHandler = (e)=>{
         e.preventDefault();
         axios.post(LoginAppUrl,userData).then((response)=>{
             const {data} = response;
-            console.log(data);
-            localStorage.setItem("username",data.username);
+            console.log(response.status);
+            localStorage.setItem("username",data);
             // alert("login successfull"+response.username);
-            notify();
+            notify("login successfull");
+            if(data) {
+                router.push('./GenerateCode');
+            }else{
+                notify("some error");
+            }
+           
            
         }).catch(()=>{
             alert("not login");
@@ -36,7 +46,6 @@ function Login(){
         console.log(userData);
     }
 
-    
 
     return(
         <div>
