@@ -4,8 +4,8 @@ import { dbConnect } from "@/app/Modals/db";
 import CodeModal from "@/app/Modals/code/code";
 
 
-export async function GET(){
-   const code=  Math.floor(100000 + Math.random() * 900000)
+export async function GET(req){
+   
     return new Response(code);
 }
                                                                                    

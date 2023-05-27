@@ -37,7 +37,7 @@ function GenerateCode(){
                             </div>
                             {code?<div className="app__code-description w-full h-12 mt-8 mx-auto 
                             text-center text-sx">
-                                <p className='app__code-description-text text-sm italic font-Quicksand text-slate-500'>Code Generated successfully,
+                                <p className='app__code-description-text text-sm italic font-Quicksand text-slate-500'>Code generated successfully,
                                 use this code to access data on multiple screens.
                                 </p>
                             </div> : ''}
