@@ -8,8 +8,8 @@ function HomeScreen() {
   const [post,setpost] = useState('');
   const [updatedPost,setupdatedPost] = useState('');
   const getPostUrl = "/api/data";
+  const postUpdateUrl = "/api/data/update"
   
-
   const tc = localStorage.getItem("TC");
   const sendCode = {code:tc}
   //fetch post data on page load
@@ -24,15 +24,39 @@ function HomeScreen() {
 
   const handlechange = (e)=>{
       setupdatedPost(e.target.value);
-      console.log(updatedPost);
+      console.log(updatedPost.length);
+      checkPostUpdate();
   }
 
   //auto save data if data changed
-  // const updatePost = () =>{
-  //     /*check if post is changed */
-      
-  // }
+  const checkPostUpdate = () =>{
+      /*check if post is updated */
+      if(updatedPost.length>post.length || updatedPost.length<post.length){
+        console.log("post updated");
+        setpost(updatePost);
+        clearTimeout();
+        setTimeout(() => {
+          updatePost(post); 
+        }, 3000);
+      }
+  }
 
+  const updatePost =(postval)=>{
+    // clearInterval()
+    console.log('updating post...')
+    const updatedPostData = {
+      code:tc,
+      notes:postval,
+    }
+    axios.post(postUpdateUrl,updatedPostData).then((response)=>{
+      console.log(response.data);
+    })  
+    // setInterval(() => {
+    //   console.log('post updated in timeout');
+    
+    // }, 30000);
+    
+  }
   
 
 

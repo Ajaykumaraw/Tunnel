@@ -12,10 +12,8 @@ export async function POST(req){
         const tPost = await CodeModal.findOne({code:user.code})
         return new Response(tPost.notes);   
     } catch (error) {
-        
+      return new Response(error);         
     }
   //  if(!user.tc) return new Response("Please login");   
-  return new Response(user.code);   
-   
-   
+  
 }
