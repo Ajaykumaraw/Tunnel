@@ -12,19 +12,37 @@ function HomeScreen() {
   
   const tc = localStorage.getItem("TC");
   const sendCode = {code:tc}
+  let newValu = '';
   //fetch post data on page load
+  const updatePostRegular = () =>{
+    axios.post(getPostUrl,sendCode).then((response)=>{
+      console.log(response);
+      const postd = response.data;
+      setpost(postd);
+    })
+  }
+
+  setInterval(() => {
+    updatePostRegular()
+  }, 40000);   //40sec
+
   useEffect(()=>{
     console.log(tc);
-      axios.post(getPostUrl,sendCode).then((response)=>{
-        console.log(response);
-        const postd = response.data;
-        setpost(postd);
-      })
-  },[])
+    axios.post(getPostUrl,sendCode).then((response)=>{
+      console.log(response);
+      const postd = response.data;
+      setpost(postd);
+    clearInterval();
+  })
+},[])
 
   const handlechange = (e)=>{
+      newValu = e.target.value;
       setupdatedPost(e.target.value);
-      console.log(updatedPost.length);
+      console.log("in handle change",newValu);
+      //console.log("in handle change",updatedPost);
+      checkPostUpdate.bind(post);
+      checkPostUpdate.bind(updatedPost);
       checkPostUpdate();
   }
 
@@ -32,22 +50,25 @@ function HomeScreen() {
   const checkPostUpdate = () =>{
       /*check if post is updated */
       if(updatedPost.length>post.length || updatedPost.length<post.length){
-        console.log("post updated");
-        setpost(updatePost);
+        console.log("in check post update",newValu);
+        setpost(newValu);
         clearTimeout();
+        console.log("after update",post);
+        updatePost.bind(post)
         setTimeout(() => {
           updatePost(post); 
         }, 3000);
       }
   }
 
-  const updatePost =(postval)=>{
+  const updatePost =(post)=>{
     // clearInterval()
     console.log('updating post...')
     const updatedPostData = {
       code:tc,
-      notes:postval,
+      notes:post,
     }
+    console.log("updating post",updatedPostData);
     axios.post(postUpdateUrl,updatedPostData).then((response)=>{
       console.log(response.data);
     })  
