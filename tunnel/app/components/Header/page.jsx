@@ -2,12 +2,14 @@ import {CiMenuFries} from 'react-icons/ci';
 import {useContext,useState} from 'react'
 import menuContext from '@/app/app_context/appContext';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 function Header() {
   const router = useRouter();
   const [tc,settc] = useState('');
   const menu = useContext(menuContext);
   const {submenu,setsubMenu} = menu; 
+  const getPostUrl = "/api/data";
 
   const handleChange = (e) =>{
     settc(e.target.value);
@@ -16,8 +18,17 @@ function Header() {
   
   const handalKeydown = (event)=>{
     if(event.key==='Enter'){
-       localStorage.setItem("TC",tc);
-        router.push("./HomeScreen");
+      console.log('event clicked')
+      const tcData = {code:tc};
+      axios.post(getPostUrl,tcData).then((response)=>{
+        console.log(response)
+          if(response.data.status === 401){
+            console.log("code not exist! retry..")
+          }else{
+            localStorage.setItem("TC",tc);
+            router.push("./HomeScreen");
+          }
+      })
     }
   }
 

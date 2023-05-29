@@ -22,62 +22,69 @@ function HomeScreen() {
     })
   }
 
-  setInterval(() => {
-    updatePostRegular()
-  }, 40000);   //40sec
+  // setInterval(() => {
+  //   updatePostRegular()
+  // }, 40000);   //40sec
 
   useEffect(()=>{
     console.log(tc);
-    axios.post(getPostUrl,sendCode).then((response)=>{
-      console.log(response);
-      const postd = response.data;
-      setpost(postd);
-    clearInterval();
-  })
+  //   axios.post(getPostUrl,sendCode).then((response)=>{
+  //     console.log(response);
+  //     const postd = response.data;
+  //     setpost(postd);
+   clearInterval();
+  // })
 },[])
 
-  const handlechange = (e)=>{
-      newValu = e.target.value;
-      setupdatedPost(e.target.value);
-      console.log("in handle change",newValu);
-      //console.log("in handle change",updatedPost);
-      checkPostUpdate.bind(post);
-      checkPostUpdate.bind(updatedPost);
-      checkPostUpdate();
+  const onkeyup = (ev) =>{
+    console.log(ev.target.value);
+    setpost(post=> ev.target.value)
+    console.log(post);
   }
 
-  //auto save data if data changed
-  const checkPostUpdate = () =>{
-      /*check if post is updated */
-      if(updatedPost.length>post.length || updatedPost.length<post.length){
-        console.log("in check post update",newValu);
-        setpost(newValu);
-        clearTimeout();
-        console.log("after update",post);
-        updatePost.bind(post)
-        setTimeout(() => {
-          updatePost(post); 
-        }, 3000);
-      }
-  }
+  // const handlechange = (e)=>{
+  //     newValu = e.target.value;
+  //     setupdatedPost(e.target.value);
+  //     console.log("in handle change",newValu);
+  //     //console.log("in handle change",updatedPost);
+  //     checkPostUpdate.bind(post);
+  //     checkPostUpdate.bind(updatedPost);
+  //     checkPostUpdate();
+  // }
 
-  const updatePost =(post)=>{
-    // clearInterval()
-    console.log('updating post...')
-    const updatedPostData = {
-      code:tc,
-      notes:post,
-    }
-    console.log("updating post",updatedPostData);
-    axios.post(postUpdateUrl,updatedPostData).then((response)=>{
-      console.log(response.data);
-    })  
-    // setInterval(() => {
-    //   console.log('post updated in timeout');
+  // //auto save data if data changed
+  // const checkPostUpdate = () =>{
+  //     /*check if post is updated */
+  //     if(updatedPost.length>post.length || updatedPost.length<post.length){
+  //       console.log("in check post update",newValu);
+  //       setpost(newValu);
+  //       clearTimeout();
+  //       console.log("after update",post);
+  //       updatePost.bind(post)
+  //       updatePost(post); 
+  //       // setTimeout(() => {
+  //       //   updatePost(post); 
+  //       // }, 3000);
+  //     }
+  // }
+
+  // const updatePost =(post)=>{
+  //   // clearInterval()
+  //   console.log('updating post...')
+  //   const updatedPostData = {
+  //     code:tc,
+  //     notes:post,
+  //   }
+  //   console.log("updating post",updatedPostData);
+  //   axios.post(postUpdateUrl,updatedPostData).then((response)=>{
+  //     console.log(response.data);
+  //   })  
+  //   // setInterval(() => {
+  //   //   console.log('post updated in timeout');
     
-    // }, 30000);
+  //   // }, 30000);
     
-  }
+  // }
   
 
 
@@ -88,10 +95,11 @@ function HomeScreen() {
         </div>
         <div className="app__contentArea w-full h-full">
             <div className="app__contentArea-content w-4/5 m mx-auto h-4/5 bg-slate-200 rounded-xl">
-                <textarea type="text" defaultValue={post} onChange={handlechange} className="w-full m mx-auto h-full bg-slate-200 rounded-xl p-3 font-Quicksand
+                <textarea type="text" defaultValue={post}  onKeyUp={onkeyup} className="w-full m mx-auto h-full bg-slate-200 rounded-xl p-3 font-Quicksand
                   outline outline-amber-500 text-slate-800
                 "/>
             </div>
+            {post}
         </div>
     </div>    
   )
