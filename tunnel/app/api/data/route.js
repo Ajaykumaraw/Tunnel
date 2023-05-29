@@ -1,6 +1,5 @@
 import { dbConnect } from "@/app/Modals/db";
 import CodeModal from "@/app/Modals/code/code";
-import { NextResponse } from "next/server";
 /*api url http://localhost:3000/api/data */
 
 export async function POST(req){
@@ -12,7 +11,7 @@ export async function POST(req){
         if(tPost){
           return new Response(tPost.notes);   
         }else{
-          return NextResponse.json({status:401,data:"code not found"})
+          return new Response({status:401,data:"code not found"})
         }
     } catch (error) {
       return new Response(error);         
