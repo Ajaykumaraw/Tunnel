@@ -5,10 +5,10 @@ import {useState,useEffect} from 'react';
 
 function HomeScreen() {
 
-  const [post,setpost] = useState({});
+  const [post,setpost] = useState('');
   const [updatedPost,setupdatedPost] = useState('');
   const getPostUrl = "/api/data";
-  const postUpdateUrl = "/api/data/update"
+  const postUpdateUrl = "/api/data/update";
   
   const tc = localStorage.getItem("TC");
   const sendCode = {code:tc}
@@ -38,10 +38,8 @@ function HomeScreen() {
 
   const onkeyup = (ev) =>{
     console.log(ev.target.value);
-    setpost((prev)=>{
-     return ({...prev,notes:[ev.target.value]})
-    })
-    console.log(post.notes);
+    setpost(post=>post=ev.target.value)
+    console.log(post);
   }
 
   // const handlechange = (e)=>{
@@ -97,11 +95,11 @@ function HomeScreen() {
         </div>
         <div className="app__contentArea w-full h-full">
             <div className="app__contentArea-content w-4/5 m mx-auto h-4/5 bg-slate-200 rounded-xl">
-                <textarea type="text" defaultValue={post.notes}  onKeyUp={onkeyup} className="w-full m mx-auto h-full bg-slate-200 rounded-xl p-3 font-Quicksand
+                <textarea type="text" defaultValue={post}  onKeyUp={onkeyup} className="w-full m mx-auto h-full bg-slate-200 rounded-xl p-3 font-Quicksand
                   outline outline-amber-500 text-slate-800
                 "/>
             </div>
-            {post.notes}
+            {post}
         </div>
     </div>    
   )
