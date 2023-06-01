@@ -10,7 +10,7 @@ function HomeScreen() {
   const getPostUrl = "/api/data";
   const postUpdateUrl = "/api/data/update";
   
-  const tc = localStorage.getItem("TC");
+  const tc = {Tc:""};
   const sendCode = {code:tc}
   let newValu = '';
   //fetch post data on page load
@@ -27,6 +27,7 @@ function HomeScreen() {
   // }, 40000);   //40sec
 
   useEffect(()=>{
+    tc.Tc = localStorage.getItem("TC");
     console.log(tc);
   //   axios.post(getPostUrl,sendCode).then((response)=>{
   //     console.log(response);
