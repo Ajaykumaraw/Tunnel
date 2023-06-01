@@ -1,3 +1,5 @@
+"use client"
+
 import {CiMenuFries} from 'react-icons/ci';
 import {useContext,useState} from 'react'
 import menuContext from '@/app/app_context/appContext';
