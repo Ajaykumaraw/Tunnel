@@ -1,4 +1,4 @@
-// path for this api -> http:localhost:3000/api/code
+// path for this api -> http:localhost:3000/api/code new code
 
 import { dbConnect } from "@/app/Modals/db";
 import CodeModal from "@/app/Modals/code/code";
