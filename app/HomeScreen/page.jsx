@@ -51,7 +51,7 @@ function HomeScreen() {
   const socketInitializer = async () => {
     // We just call it because we don't need anything else out of it
     await fetch("/api/socket");
-   // fetch api to conntet with socket
+   
     socket = io();
 
     socket.on("newIncomingMessage", (msg) => {
