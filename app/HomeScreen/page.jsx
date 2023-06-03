@@ -2,9 +2,11 @@
 
 import axios from "axios"
 import {useState,useEffect} from 'react';
+// import { Socket } from "socket.io";
+import io from 'socket.io-client';
 
 function HomeScreen() {
-
+  
   const [post,setpost] = useState('');
   const [updatedPost,setupdatedPost] = useState('');
   const getPostUrl = "/api/data";
@@ -13,6 +15,8 @@ function HomeScreen() {
   const tc = {Tc:""};
   const sendCode = {code:tc}
   let newValu = '';
+
+  
   //fetch post data on page load
   const updatePostRegular = () =>{
     axios.post(getPostUrl,sendCode).then((response)=>{
@@ -27,7 +31,12 @@ function HomeScreen() {
   // }, 40000);   //40sec
 
   useEffect(()=>{
+    socketInitializer();
     tc.Tc = localStorage.getItem("TC");
+    // Socket.on('connect', function(){
+    //   console.log('Connected to Server')
+     
+    // });
     console.log(tc);
   //   axios.post(getPostUrl,sendCode).then((response)=>{
   //     console.log(response);
@@ -36,6 +45,34 @@ function HomeScreen() {
    clearInterval();
   // })
 },[])
+
+
+
+  const socketInitializer = async () => {
+    // We just call it because we don't need anything else out of it
+    await fetch("/api/socket");
+   // fetch api to conntet with socket
+    socket = io();
+
+    socket.on("newIncomingMessage", (msg) => {
+      setMessages((currentMsg) => [
+        ...currentMsg,
+        { author: msg.author, message: msg.message },
+      ]);
+      console.log(messages);
+    });
+  };
+
+
+
+
+
+
+
+
+
+
+
 
   const onkeyup = (ev) =>{
     console.log(ev.target.value);
