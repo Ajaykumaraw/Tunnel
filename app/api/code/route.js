@@ -11,6 +11,8 @@ export async function GET(req){
                                                                                    
 
 export async function POST(req){
+    //post request receive Tcode to fetch user name and notes 
+    //with request to code 
     const user = await req.json();
     console.log(user);
     if(!user.username) return new Response("Please login");      
