@@ -32,7 +32,7 @@ function Login(){
             console.log(response.status);
             localStorage.setItem("username",data);
             // alert("login successfull"+response.username);
-            notify("login successfull");
+            notify("Login successfull");
             if(data) {
                 router.push('./GenerateCode');
             }else{
