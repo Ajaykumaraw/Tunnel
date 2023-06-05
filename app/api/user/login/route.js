@@ -6,6 +6,8 @@ export async function POST(req){
     console.log(user);
 
     try {
+        /*  first connect with database and 
+            then get user with username.      */
          dbConnect();
          const userLogin = await UserModal.findOne({username:[user.username]});
          console.log("User found",user);
