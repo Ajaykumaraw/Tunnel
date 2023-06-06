@@ -17,11 +17,18 @@ export async function POST(req){
             */
              return new Response('User not found');
 
-        
+            /* if user found in DB,then verify 
+                user password and return login successfull 
+                if password matchs.
+            */
          }else if(user.password == userLogin.password){
                 return new Response(user.username);
             
          }else{
+             /*
+             if user in DB password is not matched 
+             with the user provided in request body.
+            */
             return new Response("Incorrect Password");
          }
     } catch (error) {
