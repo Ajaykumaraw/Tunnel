@@ -17,6 +17,7 @@ export async function POST(req){
     console.log(user);
     if(!user.username) return new Response("Please login");      
     try {
+        /* Generate six digit random code */
         const Tcode=  Math.floor(100000 + Math.random() * 900000)
         dbConnect();
         const codeData = {

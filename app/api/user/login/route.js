@@ -12,7 +12,12 @@ export async function POST(req){
          const userLogin = await UserModal.findOne({username:[user.username]});
          console.log("User found",user);
          if(!userLogin){
+            /* if user not found in DB return 
+                user not found.
+            */
              return new Response('User not found');
+
+        
          }else if(user.password == userLogin.password){
                 return new Response(user.username);
             
