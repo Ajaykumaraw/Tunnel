@@ -6,6 +6,7 @@ import HomeScreen from './HomeScreen/page'
 import Menu from './components/Menu/page';
 import {useContext} from 'react';
 import menuContext from './app_context/appContext';
+import Link from 'next/link';
 
 export default function Home() {
     
@@ -27,7 +28,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="app__home_content-howItwork">
-                  <h4 className="underline underline-offset-3 text-sky-600 cursor-pointer">How it works</h4>
+                 <Link href={'./Howitworks'}><h4 className="underline underline-offset-3 text-sky-600 cursor-pointer">How it works</h4></Link> 
             </div>
         </div>
   </div>

@@ -1,6 +1,7 @@
 "use client"
 import {useState} from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 
 function Signup(){
@@ -37,6 +38,9 @@ function Signup(){
                     </div>
                     <div className="login-btn bg-app-color w-full h-8 mt-8 flex items-center text-slate-100 font-Quicksand rounded-2xl">
                         <button className="w-full">Signup</button>
+                    </div>
+                    <div className="login-btn text-slate-400 w-full h-8 mt-8 flex items-center text-slate-100 font-Quicksand rounded-2xl">
+                        <p>Have account, <Link href={'./Login'} className='underline'>Login here</Link></p>
                     </div>
                 </form>
             </div>
