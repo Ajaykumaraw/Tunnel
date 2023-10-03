@@ -15,7 +15,6 @@ function GenerateCode(){
         const data = {username:userName};
         
         axios.post(getCodeUrl,data).then((response)=>{
-            console.log(response.data);
             if(response.data==="Please login"){
                 router.push("./Login");
             }else{

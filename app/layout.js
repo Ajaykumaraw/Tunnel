@@ -15,13 +15,14 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const [submenu,setsubMenu] = useState(false);
+  const [appData,setAppData] = useState("");
   return (
     <html lang="en">
       <body className={inter.className}>
-        <menuContext.Provider value={{submenu,setsubMenu}}>
+        <menuContext.Provider value={{menu:[submenu,setsubMenu], data:[appData,setAppData]}}>
           <Header/>
           {submenu?<Menu/>:''}
-          {children}
+          {children }
         </menuContext.Provider>
       </body>
     </html>
