@@ -21,8 +21,8 @@ function HomeScreen() {
   let tc ;
 
   
-  const baseUrl = 'http://localhost:3000/api/data/'
-  const url = 'http://localhost:3000/api/data/update'
+  const baseUrl = '/api/data/'
+  const url = '/api/data/update'
   const onkeyup = (e)=>{
     setData(e.target.value)
   }
