@@ -18,7 +18,7 @@ function HomeScreen() {
   const [appData,setAppData] = data; 
   const upData = useRef(appData);
   const [isError,setIsError] = useState(false);
-  const tc =  localStorage.getItem("TC");
+  let tc ;
 
   
   const baseUrl = 'http://localhost:3000/api/data/'
@@ -28,6 +28,7 @@ function HomeScreen() {
   }
 
   useEffect(()=>{
+     tc =  localStorage.getItem("TC");
     getData(baseUrl,{code:tc}).then((res)=>  {
       if(res.status == 400){setIsError(true)}
       upData.current.value = res.data

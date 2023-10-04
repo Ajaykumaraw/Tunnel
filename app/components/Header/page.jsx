@@ -14,11 +14,12 @@ function Header() {
   const {menu,data} = useContext(menuContext);
   const [submenu,setsubMenu] = menu; 
   const [appData,setAppData] = data;
-  const tCodeFromLocalStorage =  localStorage.getItem("TC");
+  let tCodeFromLocalStorage;
   const tCode = useRef(tc);
       
  
   useEffect(()=>{
+    tCodeFromLocalStorage =  localStorage.getItem("TC");
     tCode.current.value = tCodeFromLocalStorage;
   },[])
   
