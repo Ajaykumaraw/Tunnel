@@ -1,5 +1,5 @@
 "use client"
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import axios from 'axios';
 import {useRouter} from 'next/navigation';
 
@@ -8,10 +8,14 @@ function GenerateCode(){
     const [code,setCode] = useState();
     const dummycode = 'Code';
     const getCodeUrl = "/api/code";
+    let userName;
+
+    useEffect(()=>{
+      userName = localStorage.getItem("username");
+      },[]);
 
     const clickHandler = (e) =>{
         e.preventDefault();
-        const userName = localStorage.getItem("username");
         const data = {username:userName};
         
         axios.post(getCodeUrl,data).then((response)=>{
