@@ -5,6 +5,8 @@ import Header from './components/Header/page'
 import menuContext from './app_context/appContext'
 import Menu from './components/Menu/page'
 import {useState} from 'react';
+import { store } from '../store/store'
+import { Provider } from 'react-redux'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,15 +17,15 @@ const metadata = {
 
 export default function RootLayout({ children }) {
   const [submenu,setsubMenu] = useState(false);
-  const [appData,setAppData] = useState("");
+  const [appData,setAppData] = useState();
   return (
     <html lang="en">
       <body className={inter.className}>
-        <menuContext.Provider value={{menu:[submenu,setsubMenu], data:[appData,setAppData]}}>
+      <Provider store={store}>
           <Header/>
           {submenu?<Menu/>:''}
           {children }
-        </menuContext.Provider>
+      </Provider>
       </body>
     </html>
   )

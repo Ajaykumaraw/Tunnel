@@ -10,8 +10,8 @@ import Link from 'next/link';
 
 export default function Home() {
     
-    const menu = useContext(menuContext);
-    const {submenu,setsubMenu} = menu; 
+    // const menu = useContext(menuContext);
+    // const {submenu,setsubMenu} = menu; 
   
   return (
       <div className="app__home w-full h-screen flex text-center font-Quicksand relative">
