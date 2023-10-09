@@ -1,3 +1,14 @@
+# Tunnel
+ Eassy Access
+Seemless Data Movement
+accross multiple screen
+![Screenshot from 2023-05-30 21-09-53](https://github.com/Ajaykumaraw/Tunnel/assets/108172914/9c45e621-558b-48fd-a9f6-25e1e06cee9b)
+
+
+
+
+
+
 <<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -34,10 +45,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 =======
-# Tunnel
- Eassy Access
-Seemless Data Movement
-accross multiple screen
-![Screenshot from 2023-05-30 21-09-53](https://github.com/Ajaykumaraw/Tunnel/assets/108172914/9c45e621-558b-48fd-a9f6-25e1e06cee9b)
 
 >>>>>>> refs/remotes/origin/master
